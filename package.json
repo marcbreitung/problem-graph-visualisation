@@ -2,7 +2,12 @@
   "name": "problem-graph-visualisation",
   "version": "0.1.0",
   "description": "Problem Graph Visualisation",
-  "main": "index.js",
+  "main": "dist/problem-graph-visualisation.node.min.js",
+  "module": "dist/problem-graph-visualisation.node.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcbreitung/problem-graph-visualisation"
+  },
   "scripts": {
     "build": "npm run test && npm run webpack",
     "test": "npm run eslint && npm run test-mocha",
