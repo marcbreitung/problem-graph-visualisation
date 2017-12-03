@@ -10,16 +10,17 @@ import {Level} from './../../../lib/Canvas/Level';
 suite('Canvas', function () {
 
     suite('#constructor(parameters)', function () {
-        test('should set element, width and height attributes', function () {
+        test('should set element, width, height and background attributes', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
-            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
+            let canvas = new Canvas({element: searchMap, height: 100, width: 100, background: '#e34f00'});
 
             assert.deepPropertyVal(canvas, 'levels', []);
             assert.propertyVal(canvas, 'element', searchMap);
             assert.propertyVal(canvas, 'context', searchMap.getContext(`2d`));
             assert.equal(searchMap.getAttribute('height'), 100);
             assert.equal(searchMap.getAttribute('width'), 100);
+            assert.propertyVal(canvas, 'background', '#e34f00');
         });
     });
 
