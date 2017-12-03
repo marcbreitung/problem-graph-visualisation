@@ -18,7 +18,9 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
         nodes: [
             {position: {x: 10, y: 50}, childs: [{position: {x: 90, y: 50}, childs: []}]},
             {position: {x: 90, y: 50}, childs: [{position: {x: 10, y: 50}, childs: []}]}
-        ], nodeColor: '#e34f00', lineColor: '#385171'
+        ], 
+        nodeColor: '#e34f00', 
+        lineColor: '#385171'
     });
     canvas.addLevel(level);
     canvas.update();

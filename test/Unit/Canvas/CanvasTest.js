@@ -34,15 +34,26 @@ suite('Canvas', function () {
 
             assert.sameDeepMembers(canvas.levels, [level]);
         });
-    });
-
-    suite('#addLevel(level)', function () {
-        test('should add a new level only once', function () {
+        test('should not add an existing level', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
             let level = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
             canvas.addLevel(level);
+            canvas.addLevel(level);
+
+            assert.sameDeepMembers(canvas.levels, [level]);
+        });
+        test('should update an existing level', function () {
+            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
+            let searchMap = dom.window.document.getElementById('search-map');
+            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
+
+            let level = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+            canvas.addLevel(level);
+            assert.sameDeepMembers(canvas.levels, [level]);
+
+            level = new Level('level 01', {nodes: [], nodeColor: '#ffffff', lineColor: '#385171'});
             canvas.addLevel(level);
 
             assert.sameDeepMembers(canvas.levels, [level]);
