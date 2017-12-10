@@ -2,6 +2,7 @@ let assert = require('chai').assert;
 
 import {RendererFabric} from './../../../lib/Renderer/RendererFabric';
 import {NodesRenderer} from './../../../lib/Renderer/NodesRenderer';
+import {NullRenderer} from './../../../lib/Renderer/NullRenderer';
 
 suite('RenderFabric', function () {
 
@@ -25,11 +26,11 @@ suite('RenderFabric', function () {
             rendererFabric.registerRenderer('node', NodesRenderer);
             assert.deepEqual(rendererFabric.getRenderer('node'), nodesRenderer);
         });
-        test('should return null if renderer not exists', function () {
-            let nodesRenderer = new NodesRenderer();
+        test('should return NullRenderer if renderer not exists', function () {
+            let nullRenderer = new NullRenderer();
             let rendererFabric = new RendererFabric();
             rendererFabric.registerRenderer('node', NodesRenderer);
-            assert.equal(rendererFabric.getRenderer('text'), null);
+            assert.deepEqual(rendererFabric.getRenderer('text'), nullRenderer);
         });
     });
 
