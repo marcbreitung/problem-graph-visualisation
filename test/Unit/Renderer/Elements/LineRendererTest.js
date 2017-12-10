@@ -4,25 +4,25 @@ let jsdom = require('jsdom');
 
 let {JSDOM} = jsdom;
 
-import {TextRenderer} from './../../../lib/Renderer/TextRenderer';
+import {Line} from './../../../../lib/Renderer/Elements/Line';
 
-suite('TextRenderer', function () {
+suite('Line', function () {
 
     suite('#draw(context, parameters)', function () {
-        test('should draw text', function () {
+        test('should draw a line', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
             let context = searchMap.getContext('2d');
 
-            TextRenderer.draw(context, {
-                'node': {'position': {'x': 10, 'y': 10}},
-                'text': 'hello',
-                'size': 10,
+            Line.draw(context, {
+                'from': {'position': {'x': 10, 'y': 10}},
+                'to': {'position': {'x': 20, 'y': 20}},
+                'size': 1,
                 'color': '#385171'
             });
 
-            assert.equal(context.font, '10px Arial');
-            assert.equal(context.fillStyle, '#385171');
+            assert.equal(context.lineWidth, 1);
+            assert.equal(context.strokeStyle, '#385171');
         });
     });
 

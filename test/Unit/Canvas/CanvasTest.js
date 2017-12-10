@@ -86,10 +86,8 @@ suite('Canvas', function () {
 
             canvas.addLevel(level1);
             canvas.addLevel(level2);
-
-            assert.equal(canvas.activeLevel, null);
             canvas.update();
-            assert.equal(canvas.activeLevel, level2);
+
             assert.isTrue(spy.calledTwice);
         });
     });
@@ -101,7 +99,6 @@ suite('Canvas', function () {
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
 
             let spyLevel = sinon.spy(canvas, 'renderLevel');
-            let spyConnections = sinon.spy(canvas, 'drawConnections');
 
             let level1 = new Level('level 01', {
                 'nodes': [{
@@ -125,89 +122,9 @@ suite('Canvas', function () {
 
             canvas.addLevel(level1);
             canvas.addLevel(level2);
-
-            assert.equal(canvas.activeLevel, null);
             canvas.update();
-            assert.equal(canvas.activeLevel, level2);
+
             assert.isTrue(spyLevel.calledTwice);
-            assert.isTrue(spyConnections.calledThrice);
-        });
-    });
-
-    suite('#drawConnections(node) ', function () {
-        test('should draw the connections', function () {
-            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
-            let searchMap = dom.window.document.getElementById('search-map');
-            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-            let spy = sinon.spy(canvas, 'drawLine');
-
-            canvas.activeLevel = new Level('level 01', {
-                nodes: [],
-                nodeColor: '#e34f00',
-                lineColor: '#385171'
-            });
-
-            canvas.drawConnections({
-                'position': {'x': 10, 'y': 10},
-                'childs': [
-                    {'position': {'x': 20, 'y': 20}},
-                    {'position': {'x': 30, 'y': 30}},
-                    {'position': {'x': 40, 'y': 40}}]
-            });
-
-            assert.isTrue(spy.calledThrice);
-        });
-    });
-
-    suite('#drawText(parameters)', function () {
-        test('should draw text', function () {
-            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
-            let searchMap = dom.window.document.getElementById('search-map');
-            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-
-            canvas.drawText({
-                'node': {'position': {'x': 10, 'y': 10}},
-                'text': 'hello',
-                'size': 10,
-                'color': '#385171'
-            });
-
-            assert.equal(canvas.context.font, '10px Arial');
-            assert.equal(canvas.context.fillStyle, '#385171');
-        });
-    });
-
-    suite('#drawCircle(parameters)', function () {
-        test('should draw a circle', function () {
-            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
-            let searchMap = dom.window.document.getElementById('search-map');
-            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-
-            canvas.drawCircle({
-                'node': {'position': {'x': 10, 'y': 10}},
-                'size': 10,
-                'color': '#385171'
-            });
-
-            assert.equal(canvas.context.fillStyle, '#385171');
-        });
-    });
-
-    suite('#drawLine(parameters)', function () {
-        test('should draw a line', function () {
-            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
-            let searchMap = dom.window.document.getElementById('search-map');
-            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-
-            canvas.drawLine({
-                'from': {'position': {'x': 10, 'y': 10}},
-                'to': {'position': {'x': 20, 'y': 20}},
-                'size': 1,
-                'color': '#385171'
-            });
-
-            assert.equal(canvas.context.lineWidth, 1);
-            assert.equal(canvas.context.strokeStyle, '#385171');
         });
     });
 

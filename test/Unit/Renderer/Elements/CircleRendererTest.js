@@ -4,9 +4,9 @@ let jsdom = require('jsdom');
 
 let {JSDOM} = jsdom;
 
-import {CircleRenderer} from './../../../lib/Renderer/CircleRenderer';
+import {Circle} from './../../../../lib/Renderer/Elements/Circle';
 
-suite('CircleRenderer', function () {
+suite('Circle', function () {
 
     suite('#draw(context, parameters)', function () {
         test('should draw a circle', function () {
@@ -14,7 +14,7 @@ suite('CircleRenderer', function () {
             let searchMap = dom.window.document.getElementById('search-map');
             let context = searchMap.getContext('2d');
 
-            CircleRenderer.draw(context, {
+            Circle.draw(context, {
                 'node': {'position': {'x': 10, 'y': 10}},
                 'size': 10,
                 'color': '#385171'
