@@ -1,6 +1,6 @@
 let assert = require('chai').assert;
 
-import {Level} from './../../../lib/Canvas/Level';
+import {Level} from './../../../lib/Level/Level';
 
 suite('Level', function () {
 

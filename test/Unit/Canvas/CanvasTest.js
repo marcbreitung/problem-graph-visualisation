@@ -5,7 +5,7 @@ let jsdom = require('jsdom');
 let {JSDOM} = jsdom;
 
 import {Canvas} from './../../../lib/Canvas/Canvas';
-import {Level} from './../../../lib/Canvas/Level';
+import {Level} from './../../../lib/Level/Level';
 
 suite('Canvas', function () {
 
@@ -79,7 +79,7 @@ suite('Canvas', function () {
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
 
-            let spy = sinon.spy(canvas, 'drawLevel');
+            let spy = sinon.spy(canvas, 'renderLevel');
 
             let level1 = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
             let level2 = new Level('level 02', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
@@ -94,13 +94,13 @@ suite('Canvas', function () {
         });
     });
 
-    suite('#drawLevel(level)', function () {
+    suite('#renderLevel(level)', function () {
         test('should set active Level', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
 
-            let spyLevel = sinon.spy(canvas, 'drawLevel');
+            let spyLevel = sinon.spy(canvas, 'renderLevel');
             let spyConnections = sinon.spy(canvas, 'drawConnections');
 
             let level1 = new Level('level 01', {
