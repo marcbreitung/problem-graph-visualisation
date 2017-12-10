@@ -15,6 +15,7 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
         width: 100
     });
     let level = new ProblemGraphVisualisation.Level('level 01', {
+        type: 'node',
         nodes: [
             {position: {x: 10, y: 50}, childs: [{position: {x: 90, y: 50}, childs: []}]},
             {position: {x: 90, y: 50}, childs: [{position: {x: 10, y: 50}, childs: []}]}
