@@ -11,6 +11,11 @@ suite('RenderFabric', function () {
             rendererFabric.registerRenderer('node', NodesRenderer);
             assert.deepEqual(rendererFabric.types, {'node': NodesRenderer});
         });
+        test('should not add a new renderer without renderLevel', function () {
+            let rendererFabric = new RendererFabric();
+            rendererFabric.registerRenderer('fabric', RendererFabric);
+            assert.deepEqual(rendererFabric.types, {'node': NodesRenderer});
+        });
     });
 
     suite('#getRenderer(type)', function () {
@@ -19,6 +24,12 @@ suite('RenderFabric', function () {
             let rendererFabric = new RendererFabric();
             rendererFabric.registerRenderer('node', NodesRenderer);
             assert.deepEqual(rendererFabric.getRenderer('node'), nodesRenderer);
+        });
+        test('should return null if renderer not exists', function () {
+            let nodesRenderer = new NodesRenderer();
+            let rendererFabric = new RendererFabric();
+            rendererFabric.registerRenderer('node', NodesRenderer);
+            assert.equal(rendererFabric.getRenderer('text'), null);
         });
     });
 
