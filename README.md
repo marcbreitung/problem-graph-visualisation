@@ -49,3 +49,14 @@ let canvas = new ProblemGraphVisualisation.Canvas({
 });
 canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRenderer);
 ```
+
+## Level Object
+| Attribut | Description | Value |
+| --- | --- | --- |
+| `type` | defines the renderer | `node` or `text` |
+| `nodes` | list of nodes | array |
+| `nodeColor` | node color as Hex | `#00ff00` |
+| `lineColor` | line color as Hex | `#00ff00` |
+| `textColor` | text color as Hex | `#000000` |
+| `nodeSize` | node size | integer |
+| `textSize` | text size | integer |
