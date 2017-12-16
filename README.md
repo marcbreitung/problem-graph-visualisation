@@ -58,14 +58,16 @@ let level = new ProblemGraphVisualisation.Level(name, attributes)
 
 ## Node Renderer
 ```javascript
-let canvas = new ProblemGraphVisualisation.Canvas({...});
+let canvas = new ProblemGraphVisualisation.Canvas({});
 canvas.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
 ```
+### Output
 ![Example Output](assets/nodeRenderer.png)
 
 ## Text Renderer
 ```javascript
-let canvas = new ProblemGraphVisualisation.Canvas({...});
+let canvas = new ProblemGraphVisualisation.Canvas({});
 canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRenderer);
 ```
+### Output
 ![Example Output](assets/textRenderer.png)
