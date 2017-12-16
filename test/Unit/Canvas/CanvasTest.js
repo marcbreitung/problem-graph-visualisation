@@ -10,6 +10,13 @@ import {Level} from './../../../lib/Level/Level';
 suite('Canvas', function () {
 
     suite('#constructor(parameters)', function () {
+        test('should set default values if parameters are empty', function () {
+            let canvas = new Canvas({});
+            assert.propertyVal(canvas, 'element', null);
+            assert.propertyVal(canvas, 'height', 100);
+            assert.propertyVal(canvas, 'width', 100);
+            assert.propertyVal(canvas, 'background', '#FFFFFF');
+        });
         test('should set element, width, height and background attributes', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
@@ -55,6 +62,31 @@ suite('Canvas', function () {
 
             level = new Level('level 01', {nodes: [], nodeColor: '#ffffff', lineColor: '#385171'});
             canvas.addLevel(level);
+
+            assert.sameDeepMembers(canvas.levels, [level]);
+        });
+    });
+
+    suite('#removeLevelByName(name)', function () {
+        test('should remove the level by names', function () {
+            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
+            let searchMap = dom.window.document.getElementById('search-map');
+            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
+            let level = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+
+            canvas.addLevel(level);
+            canvas.removeLevelByName('level 01');
+
+            assert.sameDeepMembers(canvas.levels, []);
+        });
+        test('should not remove the level if no level with given name exists', function () {
+            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
+            let searchMap = dom.window.document.getElementById('search-map');
+            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
+            let level = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+
+            canvas.addLevel(level);
+            canvas.removeLevelByName('level 02');
 
             assert.sameDeepMembers(canvas.levels, [level]);
         });
