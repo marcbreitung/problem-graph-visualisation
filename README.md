@@ -19,8 +19,8 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
     let level = new ProblemGraphVisualisation.Level('level 01', {
         type: 'node',
         nodes: [
-            {position: {x: 10, y: 50}, childs: [{position: {x: 90, y: 50}, childs: []}]},
-            {position: {x: 90, y: 50}, childs: [{position: {x: 10, y: 50}, childs: []}]}
+            {label: 'A', position: {x: 10, y: 50}, childs: [{position: {x: 90, y: 50}, childs: []}]},
+            {label: 'B', position: {x: 90, y: 50}, childs: [{position: {x: 10, y: 50}, childs: []}]}
         ], 
         nodeColor: '#e34f00', 
         lineColor: '#385171'
@@ -34,27 +34,27 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
   let canvas = new ProblemGraphVisualisation.Canvas(attributes);
 ```
 ### Possible Attributes
-| Attribute | Description | Value |
-| --- | --- | --- |
-| `element` | canvas | canvas DOM element |
-| `height` | canvas height | integer |
-| `width` | canvas width | integer |
-| `background` | background color as Hex (default value is `#FFFFFF` ) | `#00ff00` |
+| Attribute | Type | Default Value | Description |
+| --- | --- | --- | --- |
+| `element` | Element | `null` | canvas DOM element |
+| `height` | integer | `100` | canvas height |
+| `width` | integer | `100` | canvas width |
+| `background` | string | `#FFFFFF` | background color as Hex |
 
 ## Level Object
 ```javascript
 let level = new ProblemGraphVisualisation.Level(name, attributes)
 ```
 ### Possible Attributes
-| Attribute | Description | Value |
-| --- | --- | --- |
-| `type` | defines the renderer | `node` or `text` |
-| `nodes` | list of nodes | array |
-| `nodeColor` | node color as Hex | `#00ff00` |
-| `lineColor` | line color as Hex | `#00ff00` |
-| `textColor` | text color as Hex | `#000000` |
-| `nodeSize` | node size | integer |
-| `textSize` | text size | integer |
+| Attribute | Type | Default Value | Description |
+| --- | --- | --- | --- |
+| `type` | string | `null` | defines the renderer `node` or `text` |
+| `nodes` | array | `[]` | list of nodes |
+| `nodeColor` | string | `#000000` | node color as Hex |
+| `lineColor` | string | `#000000` | line color as Hex |
+| `textColor` | string | `#FFFFFF` | text color as Hex |
+| `nodeSize` | integer | 10 | node size |
+| `textSize` | integer | 12 | text size |
 
 ## Node Renderer
 ```javascript
