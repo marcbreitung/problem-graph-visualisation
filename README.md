@@ -29,29 +29,24 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
     canvas.update();
 </script>
 ```
-## Node Renderer
-![Example Output](assets/nodeRenderer.png)
+## Canvas Object
 ```javascript
-let canvas = new ProblemGraphVisualisation.Canvas({
-    element: document.getElementById('search-map'),
-    height: 100,
-    width: 100
-});
-canvas.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
+  let canvas = new ProblemGraphVisualisation.Canvas(attributes);
 ```
-## Text Renderer
-![Example Output](assets/textRenderer.png)
-```javascript
-let canvas = new ProblemGraphVisualisation.Canvas({
-    element: document.getElementById('search-map'),
-    height: 100,
-    width: 100
-});
-canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRenderer);
-```
+### Possible Attributes
+| Attribute | Description | Value |
+| --- | --- | --- |
+| `element` | canvas | canvas DOM element |
+| `height` | canvas height | integer |
+| `width` | canvas width | integer |
+| `background` | background color as Hex (default value is `#FFFFFF` ) | `#00ff00` |
 
 ## Level Object
-| Attribut | Description | Value |
+```javascript
+let level = new ProblemGraphVisualisation.Level(name, attributes)
+```
+### Possible Attributes
+| Attribute | Description | Value |
 | --- | --- | --- |
 | `type` | defines the renderer | `node` or `text` |
 | `nodes` | list of nodes | array |
@@ -60,3 +55,17 @@ canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRen
 | `textColor` | text color as Hex | `#000000` |
 | `nodeSize` | node size | integer |
 | `textSize` | text size | integer |
+
+## Node Renderer
+```javascript
+let canvas = new ProblemGraphVisualisation.Canvas({...});
+canvas.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
+```
+![Example Output](assets/nodeRenderer.png)
+
+## Text Renderer
+```javascript
+let canvas = new ProblemGraphVisualisation.Canvas({...});
+canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRenderer);
+```
+![Example Output](assets/textRenderer.png)
