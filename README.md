@@ -14,6 +14,8 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
         height: 100,
         width: 100
     });
+    canvasNodes.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
+    
     let level = new ProblemGraphVisualisation.Level('level 01', {
         type: 'node',
         nodes: [
@@ -27,5 +29,23 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
     canvas.update();
 </script>
 ```
-
-![Example Output](assets/example.png)
+## Node Renderer
+![Example Output](assets/nodeRenderer.png)
+```javascript
+let canvas = new ProblemGraphVisualisation.Canvas({
+    element: document.getElementById('search-map'),
+    height: 100,
+    width: 100
+});
+canvas.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
+```
+## Text Renderer
+![Example Output](assets/textRenderer.png)
+```javascript
+let canvas = new ProblemGraphVisualisation.Canvas({
+    element: document.getElementById('search-map'),
+    height: 100,
+    width: 100
+});
+canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRenderer);
+```

@@ -14,6 +14,7 @@ suite('RenderFabric', function () {
         });
         test('should not add a new renderer without renderLevel', function () {
             let rendererFabric = new RendererFabric();
+            rendererFabric.registerRenderer('node', NodesRenderer);
             rendererFabric.registerRenderer('fabric', RendererFabric);
             assert.deepEqual(rendererFabric.types, {'node': NodesRenderer});
         });
