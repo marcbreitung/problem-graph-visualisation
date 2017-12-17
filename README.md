@@ -77,7 +77,7 @@ canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRen
 ## Result Renderer
 ```javascript
 let canvas = new ProblemGraphVisualisation.Canvas({});
-canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.ResultRenderer);
+canvas.rendererFabric.registerRenderer('result', ProblemGraphVisualisation.ResultRenderer);
 ```
 ### Output
 ![Example Output](assets/resultRenderer.png)
