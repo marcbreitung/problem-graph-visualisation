@@ -6,7 +6,7 @@ export class ResultRenderer {
 
         this.context.beginPath();
 
-        level.nodes.forEach((node) => {
+        this.level.nodes.forEach((node) => {
             this.drawLine(node);
         });
 
