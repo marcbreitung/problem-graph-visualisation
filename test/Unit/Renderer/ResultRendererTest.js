@@ -30,11 +30,11 @@ suite('ResultRenderer', function () {
 
             let resultRenderer = new ResultRenderer();
 
-            let spyDrawText = sinon.spy(resultRenderer, 'drawLine');
+            let spyDrawLineTo = sinon.spy(resultRenderer, 'drawLineTo');
 
             resultRenderer.renderLevel(context, level);
 
-            assert.isTrue(spyDrawText.calledTwice);
+            assert.isTrue(spyDrawLineTo.calledTwice);
         });
     });
 

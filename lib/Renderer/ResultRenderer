@@ -7,7 +7,7 @@ export class ResultRenderer {
         this.context.beginPath();
 
         this.level.nodes.forEach((node) => {
-            this.drawLine(node);
+            this.drawLineTo(node);
         });
 
         this.context.lineWidth = this.level.lineSize;
@@ -15,7 +15,7 @@ export class ResultRenderer {
         this.context.stroke();
     }
 
-    drawLine(node) {
+    drawLineTo(node) {
         this.context.lineTo(node.position.x, node.position.y);
     }
 }
