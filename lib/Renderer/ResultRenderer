@@ -1,14 +1,15 @@
 export class ResultRenderer {
 
     renderLevel(context, level) {
-
         this.context = context;
         this.level = level;
 
         this.context.beginPath();
-        this.level.nodes.forEach((node) => {
+
+        level.nodes.forEach((node) => {
             this.drawLine(node);
         });
+
         this.context.lineWidth = this.level.lineSize;
         this.context.strokeStyle = this.level.lineColor;
         this.context.stroke();
