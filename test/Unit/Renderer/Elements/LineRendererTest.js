@@ -4,9 +4,9 @@ let jsdom = require('jsdom');
 
 let {JSDOM} = jsdom;
 
-import {Line} from './../../../../lib/Renderer/Elements/Line';
+import {LineFromTo} from './../../../../lib/Renderer/Elements/LineFromTo';
 
-suite('Line', function () {
+suite('LineFromTo', function () {
 
     suite('#draw(context, parameters)', function () {
         test('should draw a line', function () {
@@ -14,7 +14,7 @@ suite('Line', function () {
             let searchMap = dom.window.document.getElementById('search-map');
             let context = searchMap.getContext('2d');
 
-            Line.draw(context, {
+            LineFromTo.draw(context, {
                 'from': {'position': {'x': 10, 'y': 10}},
                 'to': {'position': {'x': 20, 'y': 20}},
                 'size': 1,

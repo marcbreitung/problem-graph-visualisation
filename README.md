@@ -55,6 +55,7 @@ let level = new ProblemGraphVisualisation.Level(name, attributes)
 | `textColor` | string | `#FFFFFF` | text color as Hex |
 | `nodeSize` | integer | 10 | node size |
 | `textSize` | integer | 12 | text size |
+| `lineSize` | integer | 1 | line size |
 
 ## Node Renderer
 ```javascript
@@ -71,3 +72,12 @@ canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRen
 ```
 ### Output
 ![Example Output](assets/textRenderer.png)
+
+
+## Result Renderer
+```javascript
+let canvas = new ProblemGraphVisualisation.Canvas({});
+canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.ResultRenderer);
+```
+### Output
+![Example Output](assets/resultRenderer.png)

@@ -1,0 +1,20 @@
+export class ResultRenderer {
+
+    renderLevel(context, level) {
+
+        this.context = context;
+        this.level = level;
+
+        this.context.beginPath();
+        this.level.nodes.forEach((node) => {
+            this.drawLine(node);
+        });
+        this.context.lineWidth = this.level.lineSize;
+        this.context.strokeStyle = this.level.lineColor;
+        this.context.stroke();
+    }
+
+    drawLine(node) {
+        this.context.lineTo(node.position.x, node.position.y);
+    }
+}
