@@ -4,10 +4,10 @@ let jsdom = require('jsdom');
 
 let {JSDOM} = jsdom;
 
-import {ResultRenderer} from './../../../lib/Renderer/ResultRenderer';
+import {SolutionRenderer} from './../../../lib/Renderer/SolutionRenderer';
 import {Level} from "../../../lib/Level/Level";
 
-suite('ResultRenderer', function () {
+suite('SolutionRenderer', function () {
 
     suite('#renderLevel(context, level)', function () {
         test('should call drawLine', function () {
@@ -28,11 +28,11 @@ suite('ResultRenderer', function () {
                 'lineColor': '#385171'
             });
 
-            let resultRenderer = new ResultRenderer();
+            let solutionRenderer = new SolutionRenderer();
 
-            let spyDrawLineTo = sinon.spy(resultRenderer, 'drawLineTo');
+            let spyDrawLineTo = sinon.spy(solutionRenderer, 'drawLineTo');
 
-            resultRenderer.renderLevel(context, level);
+            solutionRenderer.renderLevel(context, level);
 
             assert.isTrue(spyDrawLineTo.calledTwice);
         });

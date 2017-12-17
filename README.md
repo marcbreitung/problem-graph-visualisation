@@ -74,10 +74,10 @@ canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRen
 ![Example Output](assets/textRenderer.png)
 
 
-## Result Renderer
+## Solution Renderer
 ```javascript
 let canvas = new ProblemGraphVisualisation.Canvas({});
-canvas.rendererFabric.registerRenderer('result', ProblemGraphVisualisation.ResultRenderer);
+canvas.rendererFabric.registerRenderer('solution', ProblemGraphVisualisation.SolutionRenderer);
 ```
 ### Output
-![Example Output](assets/resultRenderer.png)
+![Example Output](assets/solutionRenderer.png)
