@@ -14,7 +14,7 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
         height: 100,
         width: 100
     });
-    canvasNodes.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
+    canvas.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
     
     let level = new ProblemGraphVisualisation.Level('level 01', {
         type: 'node',
