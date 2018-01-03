@@ -67,6 +67,22 @@ suite('Canvas', function () {
         });
     });
 
+    suite('#sortLevels(level)', function () {
+
+        test('should sort level by sorting', function () {
+            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
+            let searchMap = dom.window.document.getElementById('search-map');
+            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
+
+            let level01 = new Level('level 01', {sorting: 1});
+            canvas.addLevel(level01);
+            let level02 = new Level('level 02', {sorting: 2});
+            canvas.addLevel(level02);
+
+            assert.sameDeepMembers(canvas.levels, [level02, level01]);
+        });
+    });
+
     suite('#removeLevelByName(name)', function () {
         test('should remove the level by names', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));

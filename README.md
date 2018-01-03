@@ -49,13 +49,14 @@ let level = new ProblemGraphVisualisation.Level(name, attributes)
 | Attribute | Type | Default Value | Description |
 | --- | --- | --- | --- |
 | `type` | string | `null` | defines the renderer `node` or `text` |
+| `sorting` | integer | `0` | defines the sort order |
 | `nodes` | array | `[]` | list of nodes |
 | `nodeColor` | string | `#000000` | node color as Hex |
 | `lineColor` | string | `#000000` | line color as Hex |
 | `textColor` | string | `#FFFFFF` | text color as Hex |
-| `nodeSize` | integer | 10 | node size |
-| `textSize` | integer | 12 | text size |
-| `lineSize` | integer | 1 | line size |
+| `nodeSize` | integer | `10` | node size |
+| `textSize` | integer | `12` | text size |
+| `lineSize` | integer | `1` | line size |
 
 ## Node Renderer
 ```javascript
