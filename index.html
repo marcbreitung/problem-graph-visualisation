@@ -31,7 +31,7 @@
         height: 100,
         width: 100
     });
-    canvasNodes.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
+    canvasNodes.rendererFactory.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
 
     let nodeLevel = new ProblemGraphVisualisation.Level('level 01', {
         type: 'node',
@@ -52,7 +52,7 @@
         height: 100,
         width: 100
     });
-    canvasText.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRenderer);
+    canvasText.rendererFactory.registerRenderer('text', ProblemGraphVisualisation.TextRenderer);
 
     let textLevel = new ProblemGraphVisualisation.Level('level 02', {
         type: 'text',
@@ -75,7 +75,7 @@
         height: 100,
         width: 100
     });
-    canvasResult.rendererFabric.registerRenderer('result', ProblemGraphVisualisation.ResultRenderer);
+    canvasResult.rendererFactory.registerRenderer('result', ProblemGraphVisualisation.SolutionRenderer);
 
     let resultLevel = new ProblemGraphVisualisation.Level('level 03', {
         type: 'result',

@@ -5,7 +5,7 @@ let jsdom = require('jsdom');
 let {JSDOM} = jsdom;
 
 import {Canvas} from './../../../lib/Canvas/Canvas';
-import {Level} from './../../../lib/Level/Level';
+import {Layer} from "../../../lib/Layer/Layer";
 
 suite('Canvas', function () {
 
@@ -22,7 +22,7 @@ suite('Canvas', function () {
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100, background: '#e34f00'});
 
-            assert.deepPropertyVal(canvas, 'levels', []);
+            assert.deepPropertyVal(canvas, 'layers', []);
             assert.propertyVal(canvas, 'element', searchMap);
             assert.propertyVal(canvas, 'context', searchMap.getContext(`2d`));
             assert.equal(searchMap.getAttribute('height'), 100);
@@ -31,80 +31,80 @@ suite('Canvas', function () {
         });
     });
 
-    suite('#addLevel(level)', function () {
-        test('should add a new level', function () {
+    suite('#addLayer(layer)', function () {
+        test('should add a new layer', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-            let level = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
-            canvas.addLevel(level);
+            let layer = new Layer('layer 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+            canvas.addLayer(layer);
 
-            assert.sameDeepMembers(canvas.levels, [level]);
+            assert.sameDeepMembers(canvas.layers, [layer]);
         });
-        test('should not add an existing level', function () {
+        test('should not add an existing layer', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-            let level = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
-            canvas.addLevel(level);
-            canvas.addLevel(level);
+            let layer = new Layer('layer 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+            canvas.addLayer(layer);
+            canvas.addLayer(layer);
 
-            assert.sameDeepMembers(canvas.levels, [level]);
+            assert.sameDeepMembers(canvas.layers, [layer]);
         });
-        test('should update an existing level', function () {
+        test('should update an existing layer', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
 
-            let level = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
-            canvas.addLevel(level);
-            assert.sameDeepMembers(canvas.levels, [level]);
+            let layer = new Layer('layer 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+            canvas.addLayer(layer);
+            assert.sameDeepMembers(canvas.layers, [layer]);
 
-            level = new Level('level 01', {nodes: [], nodeColor: '#ffffff', lineColor: '#385171'});
-            canvas.addLevel(level);
+            layer = new Layer('layer 01', {nodes: [], nodeColor: '#ffffff', lineColor: '#385171'});
+            canvas.addLayer(layer);
 
-            assert.sameDeepMembers(canvas.levels, [level]);
-        });
-    });
-
-    suite('#sortLevels(level)', function () {
-
-        test('should sort level by sorting', function () {
-            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
-            let searchMap = dom.window.document.getElementById('search-map');
-            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-
-            let level01 = new Level('level 01', {sorting: 1});
-            canvas.addLevel(level01);
-            let level02 = new Level('level 02', {sorting: 2});
-            canvas.addLevel(level02);
-
-            assert.sameDeepMembers(canvas.levels, [level02, level01]);
+            assert.sameDeepMembers(canvas.layers, [layer]);
         });
     });
 
-    suite('#removeLevelByName(name)', function () {
-        test('should remove the level by names', function () {
+    suite('#sortLayers(layer)', function () {
+
+        test('should sort layer by sorting', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-            let level = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
 
-            canvas.addLevel(level);
-            canvas.removeLevelByName('level 01');
+            let layer01 = new Layer('layer 01', {sorting: 1});
+            canvas.addLayer(layer01);
+            let layer02 = new Layer('layer 02', {sorting: 2});
+            canvas.addLayer(layer02);
 
-            assert.sameDeepMembers(canvas.levels, []);
+            assert.sameDeepMembers(canvas.layers, [layer02, layer01]);
         });
-        test('should not remove the level if no level with given name exists', function () {
+    });
+
+    suite('#removeLayerByName(name)', function () {
+        test('should remove the layer by names', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-            let level = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+            let layer = new Layer('layer 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
 
-            canvas.addLevel(level);
-            canvas.removeLevelByName('level 02');
+            canvas.addLayer(layer);
+            canvas.removeLayerByName('layer 01');
 
-            assert.sameDeepMembers(canvas.levels, [level]);
+            assert.sameDeepMembers(canvas.layers, []);
+        });
+        test('should not remove the layer if no layer with given name exists', function () {
+            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
+            let searchMap = dom.window.document.getElementById('search-map');
+            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
+            let layer = new Layer('layer 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+
+            canvas.addLayer(layer);
+            canvas.removeLayerByName('layer 02');
+
+            assert.sameDeepMembers(canvas.layers, [layer]);
         });
     });
 
@@ -122,33 +122,33 @@ suite('Canvas', function () {
     });
 
     suite('#update()', function () {
-        test('should set active Level', function () {
+        test('should set active layer', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
 
-            let spy = sinon.spy(canvas, 'renderLevel');
+            let spy = sinon.spy(canvas, 'renderLayer');
 
-            let level1 = new Level('level 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
-            let level2 = new Level('level 02', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+            let layer1 = new Layer('layer 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+            let layer2 = new Layer('layer 02', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
 
-            canvas.addLevel(level1);
-            canvas.addLevel(level2);
+            canvas.addLayer(layer1);
+            canvas.addLayer(layer2);
             canvas.update();
 
             assert.isTrue(spy.calledTwice);
         });
     });
 
-    suite('#renderLevel(level)', function () {
-        test('should set active Level', function () {
+    suite('#renderLayer(layer)', function () {
+        test('should set active layer', function () {
             let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
             let searchMap = dom.window.document.getElementById('search-map');
             let canvas = new Canvas({element: searchMap, height: 100, width: 100});
 
-            let spyLevel = sinon.spy(canvas, 'renderLevel');
+            let spyLayer = sinon.spy(canvas, 'renderLayer');
 
-            let level1 = new Level('level 01', {
+            let layer1 = new Layer('layer 01', {
                 'nodes': [{
                     'position': {'x': 10, 'y': 10},
                     'childs': [{'position': {'x': 40, 'y': 40}}]
@@ -159,7 +159,7 @@ suite('Canvas', function () {
                 'nodeColor': '#e34f00',
                 'lineColor': '#385171'
             });
-            let level2 = new Level('level 02', {
+            let layer2 = new Layer('layer 02', {
                 'nodes': [{
                     'position': {'x': 10, 'y': 10},
                     'childs': [{'position': {'x': 40, 'y': 40}}]
@@ -168,11 +168,33 @@ suite('Canvas', function () {
                 'lineColor': '#385171'
             });
 
-            canvas.addLevel(level1);
-            canvas.addLevel(level2);
+            canvas.addLayer(layer1);
+            canvas.addLayer(layer2);
             canvas.update();
 
-            assert.isTrue(spyLevel.calledTwice);
+            assert.isTrue(spyLayer.calledTwice);
+        });
+    });
+
+    suite('deprecated fallbacks', function () {
+        test('#addLevel(level)', function () {
+            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
+            let searchMap = dom.window.document.getElementById('search-map');
+            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
+            let layer = new Layer('layer 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+            canvas.addLevel(layer);
+            assert.sameDeepMembers(canvas.layers, [layer]);
+        });
+        test('#removeLevelByName(level)', function () {
+            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
+            let searchMap = dom.window.document.getElementById('search-map');
+            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
+            let layer = new Layer('layer 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
+
+            canvas.addLayer(layer);
+            canvas.removeLevelByName('layer 01');
+
+            assert.sameDeepMembers(canvas.layers, []);
         });
     });
 

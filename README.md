@@ -14,7 +14,7 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
         height: 100,
         width: 100
     });
-    canvas.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
+    canvas.rendererFactory.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
     
     let level = new ProblemGraphVisualisation.Level('level 01', {
         type: 'node',
@@ -41,9 +41,9 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
 | `width` | integer | `100` | canvas width |
 | `background` | string | `#FFFFFF` | background color as Hex |
 
-## Level Object
+## Layer Object
 ```javascript
-let level = new ProblemGraphVisualisation.Level(name, attributes)
+let layer = new ProblemGraphVisualisation.Layer(name, attributes)
 ```
 ### Possible Attributes
 | Attribute | Type | Default Value | Description |
@@ -61,7 +61,7 @@ let level = new ProblemGraphVisualisation.Level(name, attributes)
 ## Node Renderer
 ```javascript
 let canvas = new ProblemGraphVisualisation.Canvas({});
-canvas.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
+canvas.rendererFactory.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
 ```
 ### Output
 ![Example Output](assets/nodeRenderer.png)
@@ -69,7 +69,7 @@ canvas.rendererFabric.registerRenderer('node', ProblemGraphVisualisation.NodesRe
 ## Text Renderer
 ```javascript
 let canvas = new ProblemGraphVisualisation.Canvas({});
-canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRenderer);
+canvas.rendererFactory.registerRenderer('text', ProblemGraphVisualisation.TextRenderer);
 ```
 ### Output
 ![Example Output](assets/textRenderer.png)
@@ -78,7 +78,7 @@ canvas.rendererFabric.registerRenderer('text', ProblemGraphVisualisation.TextRen
 ## Solution Renderer
 ```javascript
 let canvas = new ProblemGraphVisualisation.Canvas({});
-canvas.rendererFabric.registerRenderer('solution', ProblemGraphVisualisation.SolutionRenderer);
+canvas.rendererFactory.registerRenderer('solution', ProblemGraphVisualisation.SolutionRenderer);
 ```
 ### Output
 ![Example Output](assets/solutionRenderer.png)
