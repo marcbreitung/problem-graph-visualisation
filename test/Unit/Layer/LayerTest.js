@@ -6,7 +6,7 @@ suite('Layer', function () {
 
     suite('#constructor(name, parameters)', function () {
         test('should set name and type, nodes, nodeColor, lineColor nodeSize and textSize to default values', function () {
-            let layer = new Layer('level 01', {});
+            let layer = new Layer('layer 01', {});
             assert.propertyVal(layer, 'type', null);
             assert.propertyVal(layer, 'sorting', 0);
             assert.deepPropertyVal(layer, 'nodes', []);
@@ -18,7 +18,7 @@ suite('Layer', function () {
             assert.propertyVal(layer, 'lineSize', 1);
         });
         test('should set name and type, nodes, nodeColor, lineColor nodeSize and textSize attributes', function () {
-            let layer = new Layer('level 01', {
+            let layer = new Layer('layer 01', {
                 'type': 'nodes',
                 'sorting': 10,
                 'nodes': [],
@@ -31,7 +31,7 @@ suite('Layer', function () {
             });
             assert.propertyVal(layer, 'type', 'nodes');
             assert.propertyVal(layer, 'sorting', 10);
-            assert.propertyVal(layer, 'name', 'level 01');
+            assert.propertyVal(layer, 'name', 'layer 01');
             assert.deepPropertyVal(layer, 'nodes', []);
             assert.propertyVal(layer, 'nodeColor', '#e34f00');
             assert.propertyVal(layer, 'lineColor', '#385171');

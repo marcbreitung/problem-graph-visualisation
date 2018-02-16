@@ -4,7 +4,7 @@ import {RendererFactory} from './../../../lib/Renderer/RendererFactory';
 import {NodesRenderer} from './../../../lib/Renderer/NodesRenderer';
 import {NullRenderer} from './../../../lib/Renderer/NullRenderer';
 
-suite('RenderFabric', function () {
+suite('RenderFactory', function () {
 
     suite('#registerRenderer(type, Renderer)', function () {
         test('should add a new renderer', function () {
@@ -12,7 +12,7 @@ suite('RenderFabric', function () {
             rendererFactory.registerRenderer('node', NodesRenderer);
             assert.deepEqual(rendererFactory.types, {'node': NodesRenderer});
         });
-        test('should not add a new renderer without renderLevel', function () {
+        test('should not add a new renderer without renderLayer', function () {
             let rendererFactory = new RendererFactory();
             rendererFactory.registerRenderer('node', NodesRenderer);
             rendererFactory.registerRenderer('fabric', RendererFactory);

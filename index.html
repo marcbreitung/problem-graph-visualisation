@@ -33,7 +33,7 @@
     });
     canvasNodes.rendererFactory.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
 
-    let nodeLevel = new ProblemGraphVisualisation.Level('level 01', {
+    let nodeLayer = new ProblemGraphVisualisation.Layer('layer 01', {
         type: 'node',
         nodes: [
             {position: {x: 10, y: 50}, childs: [{position: {x: 90, y: 50}, childs: []}]},
@@ -43,7 +43,7 @@
         lineColor: '#385171',
         nodeSize: 5
     });
-    canvasNodes.addLevel(nodeLevel);
+    canvasNodes.addLayer(nodeLayer);
     canvasNodes.update();
 
     /* add and draw a text level */
@@ -54,7 +54,7 @@
     });
     canvasText.rendererFactory.registerRenderer('text', ProblemGraphVisualisation.TextRenderer);
 
-    let textLevel = new ProblemGraphVisualisation.Level('level 02', {
+    let textLayer = new ProblemGraphVisualisation.Layer('layer 02', {
         type: 'text',
         nodes: [
             {label: 'A', position: {x: 12, y: 50}, childs: [{position: {x: 88, y: 50}, childs: []}]},
@@ -65,7 +65,7 @@
         nodeSize: 12,
         textSize: 12
     });
-    canvasText.addLevel(textLevel);
+    canvasText.addLayer(textLayer);
     canvasText.update();
 
 
@@ -77,7 +77,7 @@
     });
     canvasResult.rendererFactory.registerRenderer('result', ProblemGraphVisualisation.SolutionRenderer);
 
-    let resultLevel = new ProblemGraphVisualisation.Level('level 03', {
+    let resultLayer = new ProblemGraphVisualisation.Layer('level 03', {
         type: 'result',
         nodes: [
             {label: 'A', position: {x: 12, y: 50}, childs: [{position: {x: 88, y: 50}, childs: []}]},
@@ -88,7 +88,7 @@
         nodeSize: 12,
         textSize: 12
     });
-    canvasResult.addLevel(resultLevel);
+    canvasResult.addLayer(resultLayer);
     canvasResult.update();
 
 </script>

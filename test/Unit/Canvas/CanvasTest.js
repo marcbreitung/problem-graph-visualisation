@@ -175,27 +175,4 @@ suite('Canvas', function () {
             assert.isTrue(spyLayer.calledTwice);
         });
     });
-
-    suite('deprecated fallbacks', function () {
-        test('#addLevel(level)', function () {
-            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
-            let searchMap = dom.window.document.getElementById('search-map');
-            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-            let layer = new Layer('layer 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
-            canvas.addLevel(layer);
-            assert.sameDeepMembers(canvas.layers, [layer]);
-        });
-        test('#removeLevelByName(level)', function () {
-            let dom = (new JSDOM(`<body><canvas id="search-map"></canvas></body>`));
-            let searchMap = dom.window.document.getElementById('search-map');
-            let canvas = new Canvas({element: searchMap, height: 100, width: 100});
-            let layer = new Layer('layer 01', {nodes: [], nodeColor: '#e34f00', lineColor: '#385171'});
-
-            canvas.addLayer(layer);
-            canvas.removeLevelByName('layer 01');
-
-            assert.sameDeepMembers(canvas.layers, []);
-        });
-    });
-
 });

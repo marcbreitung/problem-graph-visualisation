@@ -5,7 +5,7 @@ let jsdom = require('jsdom');
 let {JSDOM} = jsdom;
 
 import {TextRenderer} from './../../../lib/Renderer/TextRenderer';
-import {Level} from "../../../lib/Level/Level";
+import {Layer} from "../../../lib/Layer/Layer";
 
 suite('TextRenderer', function () {
 
@@ -16,7 +16,7 @@ suite('TextRenderer', function () {
             let searchMap = dom.window.document.getElementById('search-map');
             let context = searchMap.getContext('2d');
 
-            let level = new Level('level', {
+            let layer = new Layer('layer', {
                 'nodes': [{
                     'position': {'x': 10, 'y': 10},
                     'childs': [{'position': {'x': 40, 'y': 40}}]
@@ -32,7 +32,7 @@ suite('TextRenderer', function () {
 
             let spyDrawText = sinon.spy(textRenderer, 'drawText');
 
-            textRenderer.renderLevel(context, level);
+            textRenderer.renderLayer(context, layer);
 
             assert.isTrue(spyDrawText.calledTwice);
         });
