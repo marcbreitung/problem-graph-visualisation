@@ -16,7 +16,7 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
     });
     canvas.rendererFactory.registerRenderer('node', ProblemGraphVisualisation.NodesRenderer);
     
-    let level = new ProblemGraphVisualisation.Level('level 01', {
+    let layer = new ProblemGraphVisualisation.Layer('layer 01', {
         type: 'node',
         nodes: [
             {label: 'A', position: {x: 10, y: 50}, childs: [{position: {x: 90, y: 50}, childs: []}]},
@@ -25,7 +25,7 @@ Draws the [problem-map-generator](https://github.com/marcbreitung/problem-map-ge
         nodeColor: '#e34f00', 
         lineColor: '#385171'
     });
-    canvas.addLevel(level);
+    canvas.addLayer(layer);
     canvas.update();
 </script>
 ```
