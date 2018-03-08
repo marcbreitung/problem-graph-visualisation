@@ -26,6 +26,11 @@
     <canvas id="search-map-result" width="100" height="100"></canvas>
 </article>
 
+<article>
+    <h2>Highlight Node Renderer</h2>
+    <canvas id="search-map-highlight-node" width="100" height="100"></canvas>
+</article>
+
 <script src="dist/problem-graph-visualisation.min.js"></script>
 
 <script>
@@ -116,6 +121,26 @@
     });
     canvasResult.addLayer(resultLayer);
     canvasResult.update();
+
+    /* add and draw a text level */
+    let canvasHighlightNode = new ProblemGraphVisualisation.Canvas({
+        element: document.getElementById('search-map-highlight-node'),
+        height: 100,
+        width: 100
+    });
+    canvasHighlightNode.rendererFactory.registerRenderer('highlight-node', ProblemGraphVisualisation.HighlightNodeRenderer);
+
+    let canvasHighlightNodeLayer = new ProblemGraphVisualisation.Layer('level 04', {
+        type: 'highlight-node',
+        nodes: [
+            {label: 'A', position: {x: 12, y: 50}, childs: [{position: {x: 88, y: 50}, childs: []}]},
+            {label: 'B', position: {x: 88, y: 50}, childs: [{position: {x: 12, y: 50}, childs: []}]}
+        ],
+        nodeColor: '#e34f00',
+        nodeSize: 5
+    });
+    canvasHighlightNode.addLayer(canvasHighlightNodeLayer);
+    canvasHighlightNode.update();
 
 </script>
 

@@ -82,3 +82,12 @@ canvas.rendererFactory.registerRenderer('solution', ProblemGraphVisualisation.So
 ```
 ### Output
 ![Example Output](assets/solutionRenderer.png)
+
+
+## Highlight Node Renderer
+```javascript
+let canvas = new ProblemGraphVisualisation.Canvas({});
+canvas.rendererFactory.registerRenderer('highlight-node', ProblemGraphVisualisation.HighlightNodeRenderer);
+```
+### Output
+![Example Output](assets/highlightNodeRenderer.png)
