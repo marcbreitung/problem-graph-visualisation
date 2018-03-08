@@ -1,6 +1,6 @@
 {
   "name": "problem-graph-visualisation",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Problem Graph Visualisation",
   "main": "dist/problem-graph-visualisation.node.min.js",
   "module": "dist/problem-graph-visualisation.node.min.js",
